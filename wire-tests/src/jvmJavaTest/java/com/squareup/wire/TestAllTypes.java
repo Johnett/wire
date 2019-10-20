@@ -23,12 +23,12 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import kotlin.KotlinNullPointerException;
 import okio.Buffer;
 import okio.ByteString;
 import okio.ForwardingSource;
 import okio.Okio;
 import okio.Source;
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -543,6 +543,13 @@ public class TestAllTypes {
       assertThat(expected).hasMessage(
           "Wire type FIXED32 differs from previous type VARINT for tag 10000");
     }
+  }
+
+  @Test
+  public void sanity() {
+    AllTypes.Builder builder = getBuilder();
+    assertThat(ByteString.of(adapter.encode(builder.build())).hex())
+        .isEqualTo(TestAllTypesData.expectedOutput.hex());
   }
 
   @Test

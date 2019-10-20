@@ -24,7 +24,6 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
-import kotlin.test.fail
 
 class TestAllTypes {
   private val allTypes = createAllTypes()
@@ -206,7 +205,7 @@ class TestAllTypes {
   fun testDefaults() {
     assertEquals(true, AllTypes.DEFAULT_DEFAULT_BOOL)
     // original: "<c-cedilla>ok\a\b\f\n\r\t\v\1\01\001\17\017\176\x1\x01\x11\X1\X01\X11g<u umlaut>zel"
-    assertEquals("çok\u0007\b\\f\n\r\t\u000b\u0001\u0001" + "\u0001\u000f\u000f~\u0001\u0001\u0011\u0001\u0001\u0011güzel",
+    assertEquals("çok\u0007\b\u000C\n\r\t\u000b\u0001\u0001\u0001\u000f\u000f~\u0001\u0001\u0011\u0001\u0001\u0011güzel",
         AllTypes.DEFAULT_DEFAULT_STRING)
   }
 
